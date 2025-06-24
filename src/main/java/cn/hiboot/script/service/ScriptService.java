@@ -8,8 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Objects;
-
 /**
  * ScriptService
  *
@@ -24,7 +22,7 @@ public class ScriptService implements CommandLineRunner {
     public void run(String... args) throws Exception {
         McnAssert.state(args.length == 1, "args must be only one parameters");
         log.info("input parameter = {}", args[0]);
-        ScriptConfig scriptConfig = JacksonUtils.fromJson(args[0], ScriptConfig.class);
+        ScriptConfig scriptConfig = JacksonUtils.toBean(args[0], ScriptConfig.class);
 
         String name = scriptConfig.getName();
 
